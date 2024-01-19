@@ -7,7 +7,7 @@ test("CityDetail component renders successfully", () => {
 
     render(
         <CityContext.Provider value={{
-            pageNumber: 1,
+            currentPage: 1,
             selectedCity: undefined,
             doPaging: () => { },
             selectCity: () => { },

@@ -4,9 +4,9 @@ import { City } from '../models/city';
 interface CityContextData {
     paginatedCities: City[];
     selectedCity: City | undefined,
-    pageNumber: number | undefined,
+    currentPage: number | undefined,
 
-    doPaging: (type: string) => void;
+    doPaging: (newPage: number) => void;
     selectCity: (id: number) => void,
     cancelSelectCity: () => void;
 }
@@ -14,9 +14,9 @@ interface CityContextData {
 export const CityContext = createContext<CityContextData>({
     paginatedCities: [],
     selectedCity: undefined,
-    pageNumber: 1,
+    currentPage: 1,
 
-    doPaging: (type: string) => {},
+    doPaging: (newPage: number) => {},
     selectCity: () => {},
     cancelSelectCity: () => {}
 });

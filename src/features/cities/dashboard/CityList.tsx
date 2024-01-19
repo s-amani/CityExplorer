@@ -6,7 +6,7 @@ import { CityContext } from "../../../app/services/cityContext";
 
 export default function CityList() {
 
-    const { doPaging, pageNumber } = useContext(CityContext);
+    const { doPaging, currentPage } = useContext(CityContext);
     return (
         <>
             <Table color='teal' striped size="large">
@@ -25,11 +25,11 @@ export default function CityList() {
                 </TableBody>
             </Table>
             <ButtonGroup widths="2">
-                <Button icon onClick={() => doPaging('prev')} disabled={pageNumber === 1}>
+                <Button icon onClick={() => doPaging(currentPage! - 1)} disabled={currentPage === 1}>
                     <Icon name='arrow left' />
                     Prev
                 </Button>
-                <Button icon onClick={() => doPaging('next')}>
+                <Button icon onClick={() => doPaging(currentPage! + 1)}>
                     <Icon name='arrow right' />
                     Next
                 </Button>

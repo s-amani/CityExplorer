@@ -12,7 +12,7 @@ test("CityDetail component renders successfully", () => {
                 subcountry: 'North Ireland',
                 name: 'London'
             },
-            pageNumber: 1,
+            currentPage: 1,
             doPaging: () => {},
             selectCity: () => {},
             cancelSelectCity: () => {},

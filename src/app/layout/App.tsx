@@ -11,13 +11,11 @@ import CityListHeader from '../../features/cities/dashboard/CityListHeader';
 function App() {
 
   const [cities, setCities] = useState<City[]>([]);
-  const [paginatedCities, setPaginatedCities] = useState<City[]>([]);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [dataLoaded, setDataLoaded] = useState(false);
+  // const [paginatedCities, setPaginatedCities] = useState<City[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [selectedCity, setSelectedCity] = useState<City | undefined>(undefined);
   const [loading, setLoading] = useState(true);
-
 
   const { ICityService } = useContext(ServiceContext);
 
@@ -26,38 +24,35 @@ function App() {
     // self invoked anonymous async method
     (async () => {
 
-      if (!dataLoaded) {
-        // fetch data from the endpoint
-        const cityList = await ICityService!.list("name");
+      // fetch data from the endpoint
+      const cityList = await ICityService!.list("name");
 
-        // update props
-        setCities(cityList);
-      }
-
-      setPaginatedCities(cities.slice(pageNumber, pageNumber + 10));
+      // update props
+      setCities(cityList);
 
       setLoading(false);
-      setDataLoaded(true);
-
     })();
 
-  }, [pageNumber, cities, dataLoaded, ICityService]);
+  }, [ICityService]);
 
-  function handleSelectActivity(id: number) {
+  // Region: methods and handlers
+  const handleSelectActivity = (id: number) => {
     setSelectedCity(paginatedCities.find(x => x.geonameid === id));
   }
 
-  function handleCancelSelectActivity() {
+  const handleCancelSelectActivity = () => {
     setSelectedCity(undefined);
   }
 
-  function handleListPagination(type: string) {   
-    type === 'next' ? 
-      setPageNumber((pageNumber) => pageNumber + 10) :
-      setPageNumber((pageNumber) => pageNumber - 10);
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
   }
+  // -------------------
 
   if (loading) return <LoadingComponent content='Loading Cities...' />
+
+  const paginatedCities = ICityService!.handlePagination(currentPage, cities);
+
 
   return (
     <>
@@ -68,9 +63,9 @@ function App() {
           value={{
             paginatedCities,
             selectedCity,
-            pageNumber,
+            currentPage,
 
-            doPaging: handleListPagination,
+            doPaging: handlePageChange,
             selectCity: handleSelectActivity,
             cancelSelectCity: handleCancelSelectActivity
           }}>
