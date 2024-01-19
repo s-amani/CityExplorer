@@ -5,6 +5,13 @@ terraform {
       version = "3.87.0"
     }
   }
+
+  backend "azurerm" {
+    resource_group_name = "city-explorer-storage-rg"
+    storage_account_name = "cityexplorertfstore"
+    container_name = "tfstate"
+    key = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
@@ -53,7 +60,6 @@ resource "azurerm_linux_web_app" "city-explorer-lwa" {
     application_stack {
       docker_image_name = "${local.docker.image_name}:latest"
       docker_registry_url = "${local.docker.registry_url}"
-      node_version = "20.10.0"
     }    
   }
 }
