@@ -31,6 +31,11 @@ locals {
   }
 }
 
+variable "imagebuild" {
+  type = string
+  description = "Latest image build number e.g. 201"
+}
+
 resource "azurerm_resource_group" "city-explorer-arg" {
   name                  = "${local.app.name}-rg"
   location              = "UK South"
@@ -58,7 +63,7 @@ resource "azurerm_linux_web_app" "city-explorer-lwa" {
     always_on = true
 
     application_stack {
-      docker_image_name = "${local.docker.image_name}:latest"
+      docker_image_name = "${local.docker.image_name}:${var.imagebuild}"
       docker_registry_url = "${local.docker.registry_url}"
     }    
   }
