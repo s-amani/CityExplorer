@@ -7,11 +7,7 @@ const responseBody = <T> (response: AxiosResponse<T>) => response.data;
 axios.interceptors.response.use(async response => {
     return response;
 }, (error: AxiosError) => {
-    const { data } = error.response!;
-    
-    // handle errors, either log or notify the user
-    console.log(data);
-
+    console.log(error);
     return Promise.reject(error);
 })
 
