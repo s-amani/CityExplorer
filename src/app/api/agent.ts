@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-axios.defaults.baseURL = 'https://datahub.io/core/world-cities/r/world-cities.json';
+axios.defaults.baseURL = 'https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json';
 
 const responseBody = <T> (response: AxiosResponse<T>) => response.data;
 
