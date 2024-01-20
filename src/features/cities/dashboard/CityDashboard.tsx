@@ -1,23 +1,82 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { City } from "../../../app/models/city";
+import { CityContext } from "../../../app/services/cityContext";
 import { Grid, Segment } from "semantic-ui-react";
+import { ServiceContext } from "../../../app/services/serviceContext";
+
 import CityList from "./CityList";
 import CityDetail from "./CityDetails";
-import { CityContext } from "../../../app/services/cityContext";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
 
 export default function CityDashboard() {
 
-    const { selectedCity } = useContext(CityContext);
+    const [loading, setLoading] = useState(true);
+    
+    const [selectedCity, setSelectedCity] = useState<City | undefined>(undefined);
+    const [cities, setCities] = useState<City[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const { ICityService } = useContext(ServiceContext);
+
+    useEffect(() => {
+
+        // self invoked anonymous async method
+        (async () => {
+
+            // fetch data from the endpoint
+            const cityList = await ICityService!.list("name");
+
+            // update props
+            setCities(cityList);
+
+            setLoading(false);
+        })();
+
+    }, [ICityService]);
+
+    // Region: methods and handlers
+    const handleSelectActivity = (id: number) => {
+        setSelectedCity(paginatedCities.find(x => x.geonameid === id));
+    }
+
+    const handleCancelSelectActivity = () => {
+        setSelectedCity(undefined);
+    }
+
+    const handlePageChange = (newPage: number) => {
+        setCurrentPage(newPage);
+    }
+    // -------------------
+    const paginatedCities = ICityService!.handlePagination(currentPage, cities);
+
+    if (loading) return <LoadingComponent content='Loading Cities...' />
+
+
+    const dataContext = {
+        paginatedCities,
+        selectedCity,
+        currentPage,
+
+        doPaging: handlePageChange,
+        selectCity: handleSelectActivity,
+        cancelSelectCity: handleCancelSelectActivity
+    };
 
     return (
-        <Grid>
-            <Grid.Column width='10'>
-                <Segment>
-                    <CityList />
-                </Segment>
-            </Grid.Column>
-            <Grid.Column width='6'>
-                {selectedCity && <CityDetail />}
-            </Grid.Column>
-        </Grid>
+        <CityContext.Provider
+            value={dataContext}>
+            <Grid>
+                {/* City List view */}
+                <Grid.Column width='10'>
+                    <Segment>
+                        <CityList />
+                    </Segment>
+                </Grid.Column>
+
+                {/* City Detail view */}
+                <Grid.Column width='6'>
+                    {selectedCity && <CityDetail />}
+                </Grid.Column>
+            </Grid>
+        </CityContext.Provider>
     )
 }
