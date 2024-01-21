@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CityContext } from "../../../app/services/cityContext";
 import { Card, CardContent, CardHeader, CardMeta, CardDescription, Button, ButtonGroup } from "semantic-ui-react";
 
-export default function CityDetail() {
+export const CityDetail = () => {
 
     const { selectedCity, cancelSelectCity } = useContext(CityContext);
 
@@ -25,3 +25,5 @@ export default function CityDetail() {
         </Card>
     )
 }
+
+export default CityDetail;

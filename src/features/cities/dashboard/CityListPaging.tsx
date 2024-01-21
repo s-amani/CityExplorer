@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ButtonGroup, Button, Icon } from "semantic-ui-react";
 import { CityContext } from "../../../app/services/cityContext";
 
-export default function CityListPaging() {
+export const CityListPaging = () => {
 
     const { currentPage, doPaging } = useContext(CityContext);
 
@@ -19,3 +19,5 @@ export default function CityListPaging() {
         </ButtonGroup>
     )
 }
+
+export default CityListPaging;

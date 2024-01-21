@@ -1,7 +1,7 @@
 import { TableRow, TableHeaderCell } from "semantic-ui-react";
 
 
-export default function CityListTableHeaders() {
+export const CityListTableHeaders = () => {
     return (
         <TableRow>
             <TableHeaderCell width={3}>Geo Name Id</TableHeaderCell>
@@ -12,3 +12,5 @@ export default function CityListTableHeaders() {
         </TableRow>
     );
 }
+
+export default CityListTableHeaders;

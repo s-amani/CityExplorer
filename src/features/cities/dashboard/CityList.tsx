@@ -1,15 +1,15 @@
 import { Table, TableHeader, TableBody } from "semantic-ui-react";
 import { useContext } from "react";
 import { CityContext } from "../../../app/services/cityContext";
+import { CityListPaging } from "./CityListPaging";
+import { CityListTableRows } from "./CityListTableRows";
+import { CityListTableHeaders } from "./CityListTableHeaders";
 
-import CityListPaging from "./CityListPaging";
-import CityListTableRows from "./CityListTableRows";
-import CityListTableHeaders from "./CityListTableHeaders";
 
 
-export default function CityList() {
+export const CityList = () => {
 
-    const { paginatedCities} = useContext(CityContext);
+    const { paginatedCities } = useContext(CityContext);
     return (
         <>
             <Table color='teal' striped size="large">
@@ -28,3 +28,5 @@ export default function CityList() {
         </>
     )
 }
+
+export default CityList;

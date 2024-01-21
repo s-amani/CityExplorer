@@ -8,7 +8,7 @@ interface Props {
     city: City
 }
 
-export default function CityListTableRows({ city }: Props) {
+export const CityListTableRows = ({ city }: Props) => {
 
     const { selectCity } = useContext(CityContext);
 
@@ -30,3 +30,5 @@ export default function CityListTableRows({ city }: Props) {
         </>
     )
 }
+
+export default CityListTableRows;

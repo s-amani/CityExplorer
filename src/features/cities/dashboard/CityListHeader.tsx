@@ -1,7 +1,7 @@
 import React from "react";
 import { Header, HeaderSubheader } from "semantic-ui-react";
 
-export default function CityListHeader() {
+export const CityListHeader = () => {
     return (
         <Header>
             City List
@@ -9,3 +9,5 @@ export default function CityListHeader() {
         </Header>
     )
 }
+
+export default CityListHeader;

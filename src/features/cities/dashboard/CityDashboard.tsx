@@ -1,17 +1,21 @@
-import { useContext, useEffect, useState } from "react";
+
+import React, { Suspense, useContext, useEffect, useState } from "react";
+import { Grid, Segment } from "semantic-ui-react";
+
 import { City } from "../../../app/models/city";
 import { CityContext } from "../../../app/services/cityContext";
-import { Grid, Segment } from "semantic-ui-react";
 import { ServiceContext } from "../../../app/services/serviceContext";
 
-import CityList from "./CityList";
-import CityDetail from "./CityDetails";
-import LoadingComponent from "../../../app/layout/LoadingComponent";
+import { CityList } from "./CityList";
+import { LoadingComponent } from "../../../app/layout/LoadingComponent";
 
-export default function CityDashboard() {
+const CityDetail = React.lazy(() => import('./CityDetails'));
+
+
+export const CityDashboard = () => {
 
     const [loading, setLoading] = useState(true);
-    
+
     const [selectedCity, setSelectedCity] = useState<City | undefined>(undefined);
     const [cities, setCities] = useState<City[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -74,9 +78,16 @@ export default function CityDashboard() {
 
                 {/* City Detail view */}
                 <Grid.Column width='6'>
-                    {selectedCity && <CityDetail />}
+                    {
+                        selectedCity &&
+                        <Suspense fallback={<LoadingComponent content="Loading..." />}>
+                            <CityDetail />
+                        </Suspense>
+                    }
                 </Grid.Column>
             </Grid>
         </CityContext.Provider>
     )
 }
+
+export default CityDashboard;
