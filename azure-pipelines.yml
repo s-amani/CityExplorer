@@ -22,8 +22,17 @@ stages:
       - task: UseNode@1
         inputs:
           checkLatest: true
+      - script: |
+          node -v
+          npm -v
+        displayName: 'Print Node.js and npm versions'
+
       - script: npm install
         displayName: 'Install Dependencies'
+        
+      - script: npm install
+        displayName: 'Install Dependencies'        
+      
       - script: npm run build
         displayName: 'Run build'
 
