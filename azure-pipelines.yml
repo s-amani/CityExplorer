@@ -28,7 +28,10 @@ stages:
           npm install
           npm run test
         displayName: 'Run Tests'
-
+      - task: PublishTestResults@2
+        displayName: 'Publish Test Results junit.xml'
+        inputs:
+          testResultsFiles: junit.xml
 
 - stage: Build
   displayName: Build image
