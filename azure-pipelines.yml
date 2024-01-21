@@ -51,9 +51,10 @@ stages:
         inputs:
           testResultsFormat: 'JUnit'
           testResultsFiles: '**/TEST-*.xml'
-          testRunTitle: 'Publish to Azure Pipleline'
+          failTaskOnFailedTests: true
           buildPlatform: '$(Build.BuildId)'
-      
+        displayName: 'Publish to Azure Pipleline'      
+        
 - stage: Build
   displayName: Build image
   jobs:
