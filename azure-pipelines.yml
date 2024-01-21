@@ -20,7 +20,7 @@ stages:
     displayName: Test City Explorer App
     steps:
       - checkout: self
-      - script: echo $(Build.SourceDirectory)
+      - script: echo This is the path = $(Build.SourceDirectory)
       - task: Npm@1
         inputs:
           command: 'install'
