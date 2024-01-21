@@ -40,13 +40,6 @@ stages:
       
       - script: npm run build
         displayName: 'Run build'
-
-      - task: CopyFiles@2
-        displayName: 'Copy Files to: $(Build.SourceDirectory)/build'
-        inputs:
-          SourceFolder: $(Build.SourceDirectory)
-          Contents: web.config
-          TargetFolder: $(Build.SourceDirectory)/build
           
       - task: Npm@1
         displayName: Run Tests
