@@ -44,9 +44,9 @@ stages:
       - task: CopyFiles@2
         displayName: 'Copy Files to: $(Build.SourceDirectory)/build'
         inputs:
-          SourceFolder: '$(Build.SourceDirectory)'
+          SourceFolder: $(Build.SourceDirectory)
           Contents: web.config
-          TargetFolder: '$(Build.SourceDirectory)/build'
+          TargetFolder: $(Build.SourceDirectory)/build
           
       - task: Npm@1
         displayName: Run Tests
@@ -60,11 +60,11 @@ stages:
           testResultsFiles: junit.xml
 
       - task: PublishCodeCoverageResults@1
-        displayName: 'Publish code coverage from $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
+        displayName: Publish code coverage from $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
         inputs:
           codeCoverageTool: Cobertura
-          summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
-          reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
+          summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
+          reportDirectory: $(System.DefaultWorkingDirectory)/coverage
 
 - stage: Build
   displayName: Build image
