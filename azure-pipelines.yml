@@ -19,6 +19,10 @@ stages:
   - job: Test
     displayName: Test City Explorer App
     steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '21.x'
+        displayName: 'Install Node.js'
 
       - task: Npm@1
         displayName: Build App
