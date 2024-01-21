@@ -46,14 +46,6 @@ stages:
         inputs:
           command: 'custom'
           customCommand: 'run test'
-          
-      - task: PublishTestResults@2
-        inputs:
-          testResultsFormat: 'JUnit'
-          testResultsFiles: '**/TEST-*.xml'
-          failTaskOnFailedTests: true
-          buildPlatform: '$(Build.BuildId)'
-        displayName: 'Publish to Azure Pipleline'      
         
 - stage: Build
   displayName: Build image
