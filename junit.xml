@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="5.876">
+  <testsuite name="src\__tests__\Utility.test.ts" errors="0" failures="0" skipped="0" timestamp="2024-01-21T12:55:46" time="1.375" tests="1">
+    <testcase classname=" Sort function returns as expected" name=" Sort function returns as expected" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="src\__tests__\CityDetail.test.tsx" errors="0" failures="0" skipped="0" timestamp="2024-01-21T12:55:46" time="3.31" tests="1">
+    <testcase classname=" CityDetail component renders successfully" name=" CityDetail component renders successfully" time="0.036">
+    </testcase>
+  </testsuite>
+  <testsuite name="src\__tests__\CityList.test.tsx" errors="0" failures="0" skipped="0" timestamp="2024-01-21T12:55:46" time="3.338" tests="2">
+    <testcase classname=" CityList component renders successfully" name=" CityList component renders successfully" time="0.046">
+    </testcase>
+    <testcase classname=" Pagination next click" name=" Pagination next click" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="src\__tests__\CityAPICall.test.tsx" errors="0" failures="0" skipped="0" timestamp="2024-01-21T12:55:46" time="3.446" tests="1">
+    <testcase classname=" Fetch city list from API" name=" Fetch city list from API" time="0.077">
+    </testcase>
+  </testsuite>
+</testsuites>
