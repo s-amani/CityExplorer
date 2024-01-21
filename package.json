@@ -26,14 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false --coverage --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject",
-    "citest": "CI=true react-app-rewired test --coverage --coverageReporters=cobertura --coverageReporters=html"
+    "citest": "react-app-rewired test --coverage --coverageReporters=cobertura --coverageReporters=html"
   },
   "jest": {
-    "coverageReporters": [
-      "text",
-      "cobertura",
-      "html"
-    ],
     "reporters": [
       "default",
       "jest-junit"
