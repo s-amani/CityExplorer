@@ -31,9 +31,6 @@ stages:
           node -v
           npm -v
         displayName: 'Print Node.js and npm versions'
-
-      - script: npm install
-        displayName: 'Install Dependencies'
         
       - script: npm install
         displayName: 'Install Dependencies'        
