@@ -19,11 +19,20 @@ stages:
   - job: Test
     displayName: Test City Explorer App
     steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '21.x'
-        displayName: 'Install Node.js'
 
+      - task: Npm@1
+        displayName: Build App
+        inputs:
+          command: 'custom'
+          customCommand: 'run build'
+
+      - task: CopyFiles@2
+        displayName: 'Copy Files to: $(Build.SourceDirectory)/build'
+        inputs:
+          SourceFolder: '$(Build.SourceDirectory)'
+          Contents: web.config
+          TargetFolder: '$(Build.SourceDirectory)/build'
+          
       - task: Npm@1
         displayName: npm run test
         inputs:
