@@ -19,12 +19,11 @@ stages:
   - job: Test
     displayName: Test City Explorer App
     steps:
-      - checkout: self
-      - script: echo This is the path = $(Build.SourceDirectory)
       - task: Npm@1
         inputs:
           command: 'install'
         displayName: NPM Install
+        
       - task: UseNode@1
         displayName: Update Node
         inputs:
@@ -37,9 +36,6 @@ stages:
         
       - script: npm install
         displayName: 'Install Dependencies'        
-      
-      - script: npm run build
-        displayName: 'Run build'
           
       - task: Npm@1
         displayName: Run Tests
@@ -78,7 +74,7 @@ stages:
   dependsOn: Build
   jobs:
     - job: Provision
-      displayName: 'Provisioning Container Instance'
+      displayName: 'Provisioning Web App'
       pool: 
         vmImage: ubuntu-latest
       variables: 
