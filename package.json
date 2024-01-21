@@ -25,8 +25,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false --coverage --transformIgnorePatterns \"node_modules/(?!axios)/\"",
-    "eject": "react-scripts eject",
-    "citest": "react-app-rewired test --coverage --coverageReporters=cobertura --coverageReporters=html"
+    "test:ci": "npm run test -- --watchAll=false --reporters=default --reporters=jest-junit",
+    "eject": "react-scripts eject"
+  },
+  "jest-junit": {
+    "suiteNameTemplate": "{filepath}",
+    "outputDirectory": ".",
+    "outputName": "junit.xml"
   },
   "jest": {
     "coverageThreshold": {

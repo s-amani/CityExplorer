@@ -45,7 +45,7 @@ stages:
         displayName: Run Tests
         inputs:
           command: 'custom'
-          customCommand: 'run test'
+          customCommand: 'run test:ci'
           
       - task: PublishTestResults@2
         inputs:
