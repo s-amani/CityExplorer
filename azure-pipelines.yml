@@ -21,8 +21,7 @@ stages:
     steps:
       - task: UseNode@1
         inputs:
-          versionSpec: '21.x'  # Specify the Node.js version you need
-          addToPath: true
+          checkLatest: true
       - script: npm install
         displayName: 'Install Dependencies'
       - script: npm run build
