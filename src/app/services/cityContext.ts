@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { City } from '../models/city';
 
-interface CityContextData {
+export interface CityContextData {
     paginatedCities: City[];
     selectedCity: City | undefined,
     currentPage: number | undefined,
@@ -12,9 +12,9 @@ interface CityContextData {
 }
 
 export const CityContext = createContext<CityContextData>({
+    currentPage: 1,
     paginatedCities: [],
     selectedCity: undefined,
-    currentPage: 1,
 
     doPaging: (newPage: number) => {},
     selectCity: () => {},

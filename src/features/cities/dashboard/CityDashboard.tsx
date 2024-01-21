@@ -3,7 +3,7 @@ import React, { Suspense, useContext, useEffect, useState } from "react";
 import { Grid, Segment } from "semantic-ui-react";
 
 import { City } from "../../../app/models/city";
-import { CityContext } from "../../../app/services/cityContext";
+import { CityContext, CityContextData } from "../../../app/services/cityContext";
 import { ServiceContext } from "../../../app/services/serviceContext";
 
 import { CityList } from "./CityList";
@@ -15,10 +15,11 @@ const CityDetail = React.lazy(() => import('./CityDetails'));
 export const CityDashboard = () => {
 
     const [loading, setLoading] = useState(true);
-
-    const [selectedCity, setSelectedCity] = useState<City | undefined>(undefined);
-    const [cities, setCities] = useState<City[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
+
+    const [cities, setCities] = useState<City[]>([]);
+    const [selectedCity, setSelectedCity] = useState<City | undefined>(undefined);
+
     const { ICityService } = useContext(ServiceContext);
 
     useEffect(() => {
@@ -50,12 +51,13 @@ export const CityDashboard = () => {
         setCurrentPage(newPage);
     }
     // -------------------
+
     const paginatedCities = ICityService!.handlePagination(currentPage, cities);
 
     if (loading) return <LoadingComponent content='Loading Cities...' />
 
 
-    const dataContext = {
+    const dataContext: CityContextData = {
         paginatedCities,
         selectedCity,
         currentPage,

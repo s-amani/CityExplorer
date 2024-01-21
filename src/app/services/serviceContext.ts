@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import CityService, { ICityService } from './cityService';
+import { ICityService } from './cityService';
 
 interface IServiceProvider {
     ICityService?: ICityService;
