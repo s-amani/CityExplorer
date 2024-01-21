@@ -19,8 +19,13 @@ stages:
   - job: Test
     displayName: Test City Explorer App
     steps:
+      - task: Npm@1
+        inputs:
+          command: 'install'
+        displayName: NPM Install
       - task: UseNode@1
         inputs:
+          version: '20.11.0'
           checkLatest: true
       - script: |
           node -v
