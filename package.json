@@ -29,14 +29,6 @@
     "citest": "react-app-rewired test --coverage --coverageReporters=cobertura --coverageReporters=html"
   },
   "jest": {
-    "reporters": [
-      "default",
-      "jest-junit"
-    ],
-    "jest-junit": {
-      "output": "output/coverage/junit/junit.xml",
-      "usePathForSuiteName": "true"
-    },
     "coverageThreshold": {
       "global": {
         "lines": 50
