@@ -46,19 +46,14 @@ stages:
         inputs:
           command: 'custom'
           customCommand: 'run test'
-
+          
       - task: PublishTestResults@2
-        displayName: 'Publish Test Results junit.xml'
         inputs:
-          testResultsFiles: junit.xml
-
-      - task: PublishCodeCoverageResults@1
-        displayName: Publish code coverage from $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
-        inputs:
-          codeCoverageTool: Cobertura
-          summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
-          reportDirectory: $(System.DefaultWorkingDirectory)/coverage
-
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '**/TEST-*.xml'
+          testRunTitle: 'Publish to Azure Pipleline'
+          buildPlatform: '$(Build.BuildId)'
+      
 - stage: Build
   displayName: Build image
   jobs:
