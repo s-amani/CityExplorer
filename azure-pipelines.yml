@@ -19,16 +19,14 @@ stages:
   - job: Test
     displayName: Test City Explorer App
     steps:
-      - task: NodeTool@0
+      - task: UseNode@1
         inputs:
-          versionSpec: '21.x'
-        displayName: 'Install Node.js'
-
-      - task: Npm@1
-        displayName: Build App
-        inputs:
-          command: 'custom'
-          customCommand: 'run build'
+          versionSpec: '21.x'  # Specify the Node.js version you need
+          addToPath: true
+      - script: npm install
+        displayName: 'Install Dependencies'
+      - script: npm run build
+        displayName: 'Run build'
 
       - task: CopyFiles@2
         displayName: 'Copy Files to: $(Build.SourceDirectory)/build'
@@ -38,7 +36,7 @@ stages:
           TargetFolder: '$(Build.SourceDirectory)/build'
           
       - task: Npm@1
-        displayName: npm run test
+        displayName: Run Tests
         inputs:
           command: 'custom'
           customCommand: 'run citest'
