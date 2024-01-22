@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { CityContext } from "../../../app/services/cityContext";
 import { Card, CardContent, CardHeader, CardMeta, CardDescription, Button, ButtonGroup } from "semantic-ui-react";
 

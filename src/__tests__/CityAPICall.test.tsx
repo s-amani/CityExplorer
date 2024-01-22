@@ -7,7 +7,7 @@ import CityService from "../app/services/cityService";
 import CityDashboard from "../features/cities/dashboard/CityDashboard";
 
 
-test("Fetch city list from API", async () => {
+test("Should_Fetch_City_List_From_Backend_API", async () => {
     const cityService = new CityService();
 
     const mockFetchData = jest.spyOn(cityService, 'list')

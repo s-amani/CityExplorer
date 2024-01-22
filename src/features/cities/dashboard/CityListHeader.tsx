@@ -1,4 +1,3 @@
-import React from "react";
 import { Header, HeaderSubheader } from "semantic-ui-react";
 
 export const CityListHeader = () => {

@@ -1,7 +1,6 @@
 import { Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
-import CityDashboard from '../../features/cities/dashboard/CityDashboard';
-import CityListHeader from '../../features/cities/dashboard/CityListHeader';
+import { Outlet } from 'react-router-dom';
 
 function App() {
 
@@ -9,8 +8,7 @@ function App() {
     <>
       <NavBar />
       <Container style={{ marginTop: '7em' }}>
-        <CityListHeader />
-        <CityDashboard />
+        <Outlet />
       </Container>
     </>
   );

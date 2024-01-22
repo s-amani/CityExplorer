@@ -1,10 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import 'semantic-ui-css/semantic.min.css'
 import './app/layout/styles.css';
-import App from './app/layout/App';
-import reportWebVitals from './reportWebVitals';
+
 import { ServiceContext } from './app/services/serviceContext';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './app/router/Routes';
+
+import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
 import CityService from './app/services/cityService';
 
 const root = ReactDOM.createRoot(
@@ -13,7 +15,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <ServiceContext.Provider value={{ICityService: new CityService()}}>
-    <App />
+    <RouterProvider router={router}/>
   </ServiceContext.Provider>
 );
 

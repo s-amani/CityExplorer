@@ -3,7 +3,7 @@ import CityDetail from '../features/cities/dashboard/CityDetails';
 import { CityContext } from '../app/services/cityContext';
 import { CityListMockData } from '../app/utils/CityMockData';
 
-test("CityDetail component renders successfully", () => {
+test("Should_Render_CityDetail_Component_Successfully", () => {
 
     render(
         <CityContext.Provider value={CityListMockData}>

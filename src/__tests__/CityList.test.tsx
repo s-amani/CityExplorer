@@ -5,7 +5,7 @@ import CityListPaging from '../features/cities/dashboard/CityListPaging';
 import { CityListMockData } from '../app/utils/CityMockData';
 
 
-test("CityList component renders successfully", () => {
+test("Should_Render_CityList_Component_Successfully", () => {
 
     const mockData = {
         currentPage: 1,
@@ -41,7 +41,7 @@ test("CityList component renders successfully", () => {
     expect(element).toBeInTheDocument();
 })
 
-test("Pagination next click", async () => {
+test("Should_Fire_Handle_Paging_Method_On_Next_Button_Click", async () => {
 
     render(
         <CityContext.Provider value={CityListMockData}>

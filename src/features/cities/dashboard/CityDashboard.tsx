@@ -8,6 +8,7 @@ import { ServiceContext } from "../../../app/services/serviceContext";
 
 import { CityList } from "./CityList";
 import { LoadingComponent } from "../../../app/layout/LoadingComponent";
+import { CityListHeader } from "./CityListHeader";
 
 const CityDetail = React.lazy(() => import('./CityDetails'));
 
@@ -68,27 +69,30 @@ export const CityDashboard = () => {
     };
 
     return (
-        <CityContext.Provider
-            value={dataContext}>
-            <Grid>
-                {/* City List view */}
-                <Grid.Column width='10'>
-                    <Segment>
-                        <CityList />
-                    </Segment>
-                </Grid.Column>
+        <>
+            <CityListHeader />
+            <CityContext.Provider
+                value={dataContext}>
+                <Grid>
+                    {/* City List view */}
+                    <Grid.Column width='10'>
+                        <Segment>
+                            <CityList />
+                        </Segment>
+                    </Grid.Column>
 
-                {/* City Detail view */}
-                <Grid.Column width='6'>
-                    {
-                        selectedCity &&
-                        <Suspense fallback={<LoadingComponent content="Loading..." />}>
-                            <CityDetail />
-                        </Suspense>
-                    }
-                </Grid.Column>
-            </Grid>
-        </CityContext.Provider>
+                    {/* City Detail view */}
+                    <Grid.Column width='6'>
+                        {
+                            selectedCity &&
+                            <Suspense fallback={<LoadingComponent content="Loading..." />}>
+                                <CityDetail />
+                            </Suspense>
+                        }
+                    </Grid.Column>
+                </Grid>
+            </CityContext.Provider>
+        </>
     )
 }
 

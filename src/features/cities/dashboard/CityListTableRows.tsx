@@ -21,7 +21,8 @@ export const CityListTableRows = ({ city }: Props) => {
                 <TableCell>{city.subcountry}</TableCell>
                 <TableCell>
                     <Button
-                        primary
+                        basic
+                        fluid
                         content="View"
                         onClick={() => selectCity(city.geonameid)}
                     />

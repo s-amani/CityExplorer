@@ -15,7 +15,7 @@ export default class CityService implements ICityService {
     var result = await request.get<City[]>('');
 
     // implement sorting
-    var sortedCities = result.sortByProp(sortBy);
+    var sortedCities = ArrayHelper.sort(result, sortBy);
 
     return sortedCities;
   }

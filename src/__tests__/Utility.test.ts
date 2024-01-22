@@ -2,7 +2,7 @@ import { City } from "../app/models/city";
 import { UnsortedCityListData } from "../app/utils/CityMockData";
 import { ArrayHelper } from "../app/utils/arrayHelpers";
 
-test('Sort function returns as expected', () => {
+test('Should_Return_Given_Data_In_Sorted', () => {
     // Arrange
     const expected = [
         {
