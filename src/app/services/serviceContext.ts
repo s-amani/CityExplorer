@@ -1,3 +1,6 @@
+
+
+
 import { createContext } from 'react';
 import { ICityService } from './cityService';
 
@@ -6,7 +9,7 @@ interface IServiceProvider {
 }
 
 export class ServiceProvider implements IServiceProvider {
-    ICityService?: ICityService | undefined;
+    ICityService?: ICityService;
 }
 
-export const ServiceContext = createContext<IServiceProvider>(new ServiceProvider);
+export const ServiceContext = createContext<IServiceProvider>(new ServiceProvider());

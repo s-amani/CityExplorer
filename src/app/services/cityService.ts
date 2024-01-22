@@ -10,17 +10,17 @@ export interface ICityService {
 
 export default class CityService implements ICityService {
 
-  async list(sortBy: string = 'name'): Promise<City[]> {
+  public async list(sortBy: string = 'name'): Promise<City[]> {
 
     var result = await request.get<City[]>('');
 
     // implement sorting
-    var sortedCities = ArrayHelper.sort(result, sortBy);
+    var sortedCities = result.sortByProp(sortBy);
 
     return sortedCities;
   }
 
-  handlePagination = (currentPage: number, cities: City[]): City[] => {
+  public handlePagination = (currentPage: number, cities: City[]): City[] => {
 
     const [startIndex, endIndex] = this.getPaginationRange(currentPage);
     const paginatedCities = cities.slice(startIndex, endIndex);
@@ -28,7 +28,7 @@ export default class CityService implements ICityService {
     return paginatedCities;
   }
 
-  getPaginationRange = (currentPage: number): [startIndex: number, endIndex: number] => {
+  private getPaginationRange = (currentPage: number): [startIndex: number, endIndex: number] => {
     
     const itemsPerPage = 10;
 
