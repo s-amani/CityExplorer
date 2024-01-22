@@ -9,6 +9,7 @@ import { ServiceContext } from "../../../app/services/serviceContext";
 import { CityList } from "./CityList";
 import { LoadingComponent } from "../../../app/layout/LoadingComponent";
 import { CityListHeader } from "./CityListHeader";
+import CityDetailPlaceholder from "./CityDetailPlaceholder";
 
 const CityDetail = React.lazy(() => import('./CityDetails'));
 
@@ -84,10 +85,11 @@ export const CityDashboard = () => {
                     {/* City Detail view */}
                     <Grid.Column width='6'>
                         {
-                            selectedCity &&
-                            <Suspense fallback={<LoadingComponent content="Loading..." />}>
+                            selectedCity ? 
+                            (<Suspense fallback={<LoadingComponent content="Loading..." />}>
                                 <CityDetail />
-                            </Suspense>
+                            </Suspense>) : 
+                            <CityDetailPlaceholder />
                         }
                     </Grid.Column>
                 </Grid>
