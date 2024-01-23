@@ -4,7 +4,7 @@ import { City } from '../models/city';
 export interface CityContextData {
     paginatedCities: City[];
     selectedCity: City | undefined,
-    currentPage: number | undefined,
+    currentPage: number,
 
     doPaging: (newPage: number) => void;
     selectCity: (id: number) => void,

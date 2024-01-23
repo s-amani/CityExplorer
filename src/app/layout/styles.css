@@ -3,7 +3,11 @@ body {
 }
 
 .ui.inverted.top.fixed.menu {
-  background-image: linear-gradient(135deg, rgb(24, 42, 115) 0%, rgb(33, 138, 174) 69%, rgb(32, 167, 172) 89%);
+  background-image: 
+    linear-gradient(135deg, 
+      rgb(24, 42, 115) 0%, 
+      rgb(33, 138, 174) 69%, 
+      rgb(32, 167, 172) 89%);
 }
 
 tr:nth-child(even) {
@@ -14,4 +18,68 @@ tr:nth-child(even) {
   margin-right: 10px !important;
   width: 25px !important;
   height: 30px;
+}
+
+table tbody tr button,
+.ui.two.buttons button {
+  border-bottom: 2px solid transparent !important;
+}
+
+table tbody tr button:hover,
+.ui.two.buttons button:hover{
+  border-bottom-color: #00b5ad !important;
+}
+
+.welcome-container {
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.welcome {
+  width: 100%;
+}
+
+.welcome .welcome-text {
+  display:block;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.welcome .welcome-text:nth-child(2) {
+  color: grey;
+}
+
+.welcome .welcome-text:first-of-type {
+  animation: showup 5s normal;
+}
+
+.welcome .welcome-text:last-of-type {
+  animation: reveal 5s normal;
+}
+
+.welcome .welcome-text:last-of-type span {
+  animation: slidein 5s normal;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:0.5;}
+    80% {opacity:1;}
+    100% {opacity:1;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:455px;}
+    80% {opacity:1;}
+    100% {opacity:1;width:400px;}
 }

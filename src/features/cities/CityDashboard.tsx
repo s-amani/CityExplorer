@@ -2,12 +2,12 @@
 import React, { Suspense, useContext, useEffect, useState } from "react";
 import { Grid, Segment } from "semantic-ui-react";
 
-import { City } from "../../../app/models/city";
-import { CityContext, CityContextData } from "../../../app/services/cityContext";
-import { ServiceContext } from "../../../app/services/serviceContext";
+import { City } from "../../app/models/city";
+import { CityContext, CityContextData } from "../../app/services/cityContext";
+import { ServiceContext } from "../../app/services/serviceContext";
 
 import { CityList } from "./CityList";
-import { LoadingComponent } from "../../../app/layout/LoadingComponent";
+import { LoadingComponent } from "../../app/layout/LoadingComponent";
 import { CityListHeader } from "./CityListHeader";
 import CityDetailPlaceholder from "./CityDetailPlaceholder";
 
@@ -20,7 +20,7 @@ export const CityDashboard = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const [cities, setCities] = useState<City[]>([]);
-    const [selectedCity, setSelectedCity] = useState<City | undefined>(undefined);
+    const [selectedCity, setSelectedCity] = useState<City>();
 
     const { ICityService } = useContext(ServiceContext);
 
@@ -41,17 +41,11 @@ export const CityDashboard = () => {
     }, [ICityService]);
 
     // Region: methods and handlers
-    const handleSelectActivity = (id: number) => {
-        setSelectedCity(paginatedCities.find(x => x.geonameid === id));
-    }
+    const handleSelectActivity = (id: number) => setSelectedCity(paginatedCities.find(x => x.geonameid === id));
 
-    const handleCancelSelectActivity = () => {
-        setSelectedCity(undefined);
-    }
+    const handleCancelSelectActivity = () => setSelectedCity(undefined);
 
-    const handlePageChange = (newPage: number) => {
-        setCurrentPage(newPage);
-    }
+    const handlePageChange = (newPage: number) => setCurrentPage(newPage);
     // -------------------
 
     const paginatedCities = ICityService!.handlePagination(currentPage, cities);
@@ -85,11 +79,11 @@ export const CityDashboard = () => {
                     {/* City Detail view */}
                     <Grid.Column width='6'>
                         {
-                            selectedCity ? 
-                            (<Suspense fallback={<LoadingComponent content="Loading..." />}>
-                                <CityDetail />
-                            </Suspense>) : 
-                            <CityDetailPlaceholder />
+                            selectedCity ?
+                                (<Suspense fallback={<LoadingComponent content="Loading..." />}>
+                                    <CityDetail />
+                                </Suspense>) :
+                                <CityDetailPlaceholder />
                         }
                     </Grid.Column>
                 </Grid>

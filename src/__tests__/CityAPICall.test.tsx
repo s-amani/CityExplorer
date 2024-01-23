@@ -4,7 +4,7 @@ import { ServiceContext } from "../app/services/serviceContext";
 import { CityMockData } from "../app/utils/CityMockData";
 
 import CityService from "../app/services/cityService";
-import CityDashboard from "../features/cities/dashboard/CityDashboard";
+import CityDashboard from "../features/cities/CityDashboard";
 
 
 test("Should_Fetch_City_List_From_Backend_API", async () => {

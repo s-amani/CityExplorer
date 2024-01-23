@@ -1,7 +1,7 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../layout/App";
 import { HomePage } from "../../features/home/HomePage";
-import CityDashboard from "../../features/cities/dashboard/CityDashboard";
+import CityDashboard from "../../features/cities/CityDashboard";
 
 export const routes: RouteObject[] = [
     {
@@ -9,7 +9,7 @@ export const routes: RouteObject[] = [
         element: <App />,
         children: [
             { path: '', element: <HomePage /> },
-            { path: 'cities', element: <CityDashboard /> }
+            { path: '/cities', element: <CityDashboard /> }
         ]
     }
 ]

@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { CityContext } from '../app/services/cityContext';
-import CityList from '../features/cities/dashboard/CityList';
-import CityListPaging from '../features/cities/dashboard/CityListPaging';
+import CityList from '../features/cities/CityList';
+import CityListPaging from '../features/cities/CityListPaging';
 import { CityListMockData } from '../app/utils/CityMockData';
 
 

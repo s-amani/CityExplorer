@@ -6,7 +6,6 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from './app/router/Routes';
 
 import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
 import CityService from './app/services/cityService';
 
 const root = ReactDOM.createRoot(
@@ -15,9 +14,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <ServiceContext.Provider value={{ICityService: new CityService()}}>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </ServiceContext.Provider>
 );
-
-
-reportWebVitals();

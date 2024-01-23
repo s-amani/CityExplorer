@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { TableRow, TableCell, Button } from "semantic-ui-react";
-import { CityContext } from "../../../app/services/cityContext";
-import { City } from "../../../app/models/city";
+import { CityContext } from "../../app/services/cityContext";
+import { City } from "../../app/models/city";
 
 
 interface Props {

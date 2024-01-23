@@ -5,7 +5,6 @@ axios.defaults.baseURL = 'https://pkgstore.datahub.io/core/world-cities/world-ci
 
 const responseBody = <T> (response: AxiosResponse<T>) => response.data;
 
-
 axios.interceptors.response.use(async response => {
     await ThreadHelpers.sleep(2000);
     return response;
@@ -15,9 +14,6 @@ axios.interceptors.response.use(async response => {
 })
 
 export const request = {
-    get: <T> (url: string) => axios.get<T>(url).then(responseBody),
-    post: <T> (url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
-    put: <T> (url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
-    del: (url: string) => axios.delete(url).then(responseBody)
+    get: <T> (url: string) => axios.get<T>(url).then(responseBody)
 }
 

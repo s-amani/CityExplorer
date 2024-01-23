@@ -12,4 +12,4 @@ export class ServiceProvider implements IServiceProvider {
     ICityService?: ICityService;
 }
 
-export const ServiceContext = createContext<IServiceProvider>(new ServiceProvider());
+export const ServiceContext = createContext<IServiceProvider>({});
